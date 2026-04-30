@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>16 Tools Data Extractor | Pro Bundle</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#030712',
+                        card: '#0f172a',
+                        border: '#1e293b',
+                        primary: '#3b82f6',
+                        whatsapp: '#25D366'
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* Abstract Grid Background */
+        .bg-grid {
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+            -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 80%);
+        }
+
+        /* Ambient Glow */
+        .glow-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: -1;
+            filter: blur(40px);
+        }
+
+        @media (max-width: 768px) {
+            .glow-blob {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        /* Premium Card Hover */
+        .glass-card {
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.9) 0%, rgba(15, 23, 42, 0.4) 100%);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        @media (hover: hover) {
+            .glass-card:hover {
+                transform: translateY(-5px) scale(1.02);
+                border-color: rgba(59, 130, 246, 0.5);
+                box-shadow: 0 20px 40px -10px rgba(59, 130, 246, 0.15);
+            }
+        }
+
+        /* Shimmer text */
+        .text-shimmer {
+            background: linear-gradient(90deg, #f8fafc 0%, #94a3b8 50%, #f8fafc 100%);
+            background-size: 200% auto;
+            color: transparent;
+            -webkit-background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+
+        @keyframes shimmer {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Mobile fixes */
+        @media (max-width: 640px) {
+            .modal-scroll {
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+        }
+    </style>
+</head>
+
+<body class="relative min-h-screen">
+
+    <!-- Background Elements -->
+    <div class="fixed inset-0 bg-grid z-[-2]"></div>
+    <div class="glow-blob top-[-200px] left-[-200px] bg-blue-500/20"></div>
+    <div class="glow-blob bottom-[20%] right-[-200px] bg-purple-500/10"></div>
+
+    <!-- Navigation/Header -->
+    <nav class="fixed top-0 w-full border-b border-white/10 bg-background/50 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="font-bold text-xl tracking-tight flex items-center gap-2">
+                <i class="fa-solid fa-bolt text-primary"></i> DataXtractor Pro
+            </div>
+            <a href="https://wa.me/916262255556"
+                class="px-4 py-1.5 text-sm font-semibold bg-white/10 hover:bg-white/20 rounded-full transition-colors">
+                Contact Support
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="pt-24 md:pt-32 pb-16 md:pb-20 px-4 md:px-6 max-w-7xl mx-auto text-center relative z-10">
+
+        <div
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-8">
+            <span class="relative flex h-2 w-2">
+                <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+            </span>
+            Limited Time Offer Active
+        </div>
+
+        <h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-4 md:mb-6">
+            The Ultimate <br />
+            <span class="text-shimmer">Data Extraction Bundle</span>
+        </h1>
+
+        <p class="text-sm sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-6 md:mb-10 px-2">
+            Generate unlimited B2B and B2C leads effortlessly. Get lifetime access to 16 premium tools today.
+        </p>
+
+        <!-- Pricing Card -->
+        <div
+            class="max-w-md mx-auto p-[1px] rounded-2xl bg-gradient-to-b from-blue-500/50 to-transparent shadow-2xl shadow-blue-500/20 mb-16">
+            <div class="bg-card/90 backdrop-blur-xl rounded-2xl p-8 border border-white/5">
+                <div class="flex justify-center items-baseline gap-2 mb-2">
+                    <span class="text-slate-400 text-xl line-through font-semibold">₹4,999</span>
+                    <span class="text-5xl font-black text-white">₹299</span>
+                </div>
+                <p class="text-sm text-slate-400 mb-6 uppercase tracking-wider font-semibold">One-Time Payment •
+                    Lifetime Access</p>
+
+                <button onclick="openPaymentModal()"
+                    class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-lg py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1">
+                    <i class="fa-solid fa-lock text-xl"></i> Unlock All 16 Tools Now
+                </button>
+
+                <p class="text-xs text-slate-500 mt-4"><i class="fa-solid fa-bolt text-yellow-500 mr-1"></i> Instant
+                    automated delivery after payment</p>
+            </div>
+        </div>
+
+        <!-- Features Grid -->
+        <div class="text-left mt-24">
+            <h2 class="text-3xl font-bold mb-2">See Every Tool In Action</h2>
+            <p class="text-slate-400 mb-10">Watch live demos of all 16 tools. Click play to see them work in real-time.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6">
+                <!-- Tool 1: GMap -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'AgoSAEirIw4')">
+                        <img src="https://i.ytimg.com/vi/AgoSAEirIw4/hqdefault.jpg" alt="GMap Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-0.5 md:mb-1">GMap Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract business leads from
+                            Google Maps globally.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 2: Facebook -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'Y1szmghI1bI')">
+                        <img src="https://i.ytimg.com/vi/Y1szmghI1bI/hqdefault.jpg" alt="Facebook Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Facebook Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Scrape audience data & contacts
+                            from FB Groups & Pages.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 3: WhatsApp -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'L4RikK5XGyk')">
+                        <img src="https://i.ytimg.com/vi/L4RikK5XGyk/hqdefault.jpg" alt="WhatsApp Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">WhatsApp Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Bulk sender & group member
+                            extractor for outreach.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 4: IndiaMart -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'FMv07Up0kiU')">
+                        <img src="https://i.ytimg.com/vi/FMv07Up0kiU/hqdefault.jpg" alt="IndiaMart Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">IndiaMart Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Fetch wholesaler & supplier
+                            contacts from IndiaMart.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 5: Lead Manager -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'kIu4S9N7sfI')">
+                        <img src="https://i.ytimg.com/vi/kIu4S9N7sfI/hqdefault.jpg" alt="Lead Manager Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Lead Manager</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Organize & manage all your
+                            extracted B2B leads.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 6: JustDial -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'NOF3WRv3Dlc')">
+                        <img src="https://i.ytimg.com/vi/NOF3WRv3Dlc/hqdefault.jpg" alt="JustDial Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">JustDial Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract verified Indian business
+                            contacts from JD.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 7: Jobs -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, '6T2RuMa_bLg')">
+                        <img src="https://i.ytimg.com/vi/6T2RuMa_bLg/hqdefault.jpg" alt="Jobs Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Jobs Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Pull HR contacts & recruiter
+                            details from job portals.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 8: Real Estate -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'd3KwVTAZTTw')">
+                        <img src="https://i.ytimg.com/vi/d3KwVTAZTTw/hqdefault.jpg" alt="Real Estate Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Real Estate Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Find property listings & broker
+                            contacts effortlessly.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 9: Bing -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'tZ-U4-8W6eY')">
+                        <img src="https://i.ytimg.com/vi/tZ-U4-8W6eY/hqdefault.jpg" alt="Bing Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Bing Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract business data from Bing
+                            search results.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 10: SERP -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'nNUVYNLRojo')">
+                        <img src="https://i.ytimg.com/vi/nNUVYNLRojo/hqdefault.jpg" alt="SERP Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">SERP Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract ranking websites & SEO
+                            data for any keyword.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 11: Social -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, '4OA7Ho0isZA')">
+                        <img src="https://i.ytimg.com/vi/4OA7Ho0isZA/hqdefault.jpg" alt="Social Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Social Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract influencer contacts &
+                            social media profiles.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 12: TradeIn -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, '6O6DOTRw3YU')">
+                        <img src="https://i.ytimg.com/vi/6O6DOTRw3YU/hqdefault.jpg" alt="TradeIn Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">TradeIn Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract export-import data &
+                            international trade leads.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 13: Website -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'bsTyvHejayo')">
+                        <img src="https://i.ytimg.com/vi/bsTyvHejayo/hqdefault.jpg" alt="Website Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Website Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Deep-scan websites to find hidden
+                            emails & phone numbers.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 14: Yelp -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'B4pRmJGZAUQ')">
+                        <img src="https://i.ytimg.com/vi/B4pRmJGZAUQ/hqdefault.jpg" alt="Yelp Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Yelp Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract business reviews, ratings
+                            & owner contacts.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 15: Yellow Pages -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, '7DGHlEdFPkw')">
+                        <img src="https://i.ytimg.com/vi/7DGHlEdFPkw/hqdefault.jpg" alt="Yellow Pages Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Yellow Pages</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Scrape YP directories for
+                            categorized business contacts.</p>
+                    </div>
+                </div>
+
+                <!-- Tool 16: Zauba -->
+                <div class="glass-card rounded-2xl overflow-hidden">
+                    <div class="video-thumb relative cursor-pointer group" onclick="playVideo(this, 'z-dTQzYSy2w')">
+                        <img src="https://i.ytimg.com/vi/z-dTQzYSy2w/hqdefault.jpg" alt="Zauba Tool Demo"
+                            class="w-full aspect-video object-cover">
+                        <div
+                            class="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/20 transition-all">
+                            <div
+                                class="w-10 h-10 md:w-14 md:h-14 rounded-full bg-red-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                                <i class="fa-solid fa-play text-white text-sm md:text-xl ml-0.5"></i></div>
+                        </div>
+                    </div>
+                    <div class="p-3 md:p-5">
+                        <h3 class="text-sm md:text-lg font-bold text-white mb-0.5 md:mb-1">Zauba Tool</h3>
+                        <p class="text-[10px] md:text-xs text-slate-400 leading-tight">Extract corporate data & company
+                            registration details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Second CTA -->
+        <div class="mt-20 text-center">
+            <button onclick="openPaymentModal()"
+                class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-lg py-4 px-12 rounded-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1">
+                <i class="fa-solid fa-lock text-xl"></i> Get All 16 Tools — ₹299 Only
+            </button>
+            <p class="text-xs text-slate-500 mt-4">One-time payment • Lifetime access • Instant delivery</p>
+        </div>
+
+    </main>
+
+    <!-- Social Proof Stats -->
+    <section class="border-y border-white/5 bg-white/[0.02] py-8 md:py-10">
+        <div class="max-w-5xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
+            <div>
+                <p class="text-2xl md:text-3xl font-black text-white">10,500+</p>
+                <p class="text-[11px] text-slate-500 mt-1">Happy Users</p>
+            </div>
+            <div>
+                <p class="text-2xl md:text-3xl font-black text-white">16</p>
+                <p class="text-[11px] text-slate-500 mt-1">Premium Tools</p>
+            </div>
+            <div>
+                <p class="text-2xl md:text-3xl font-black text-white">50L+</p>
+                <p class="text-[11px] text-slate-500 mt-1">Leads Extracted</p>
+            </div>
+            <div>
+                <p class="text-2xl md:text-3xl font-black text-blue-400">4.8 ⭐</p>
+                <p class="text-[11px] text-slate-500 mt-1">User Rating</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-12 md:py-16 px-4">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">What Our Users Say</h2>
+            <p class="text-slate-500 text-sm text-center mb-8">Real results from real business owners</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <!-- Review 1 -->
+                <div class="bg-white/[0.04] border border-white/5 rounded-xl p-5">
+                    <div class="flex gap-1 mb-3 text-yellow-400 text-xs">★★★★★</div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">"Extracted 2000+ local business leads in a
+                        single day using GMap tool. Messaged them on WhatsApp and closed 15 clients. Best investment
+                        ever!"</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white text-xs font-bold">
+                            RK</div>
+                        <div>
+                            <p class="text-white text-xs font-semibold">Rahul Kumar</p>
+                            <p class="text-slate-500 text-[10px]">Digital Marketing Agency, Delhi</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="bg-white/[0.04] border border-white/5 rounded-xl p-5">
+                    <div class="flex gap-1 mb-3 text-yellow-400 text-xs">★★★★★</div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">"I extract data from both LinkedIn and
+                        Facebook to run email campaigns. These tools alone generate 3-4 lakh worth of business every
+                        month!"</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-white text-xs font-bold">
+                            PS</div>
+                        <div>
+                            <p class="text-white text-xs font-semibold">Priya Sharma</p>
+                            <p class="text-slate-500 text-[10px]">B2B Lead Generation, Mumbai</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="bg-white/[0.04] border border-white/5 rounded-xl p-5">
+                    <div class="flex gap-1 mb-3 text-yellow-400 text-xs">★★★★★</div>
+                    <p class="text-slate-300 text-sm leading-relaxed mb-4">"Was paying ₹5000/month for data tools
+                        before. Now I got lifetime access for just ₹299. Got my ROI back in the very first week. Highly
+                        recommend!"</p>
+                    <div class="flex items-center gap-3">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center text-white text-xs font-bold">
+                            AJ</div>
+                        <div>
+                            <p class="text-white text-xs font-semibold">Amit Jain</p>
+                            <p class="text-slate-500 text-[10px]">E-commerce Owner, Jaipur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-12 md:py-16 px-4 border-t border-white/5">
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-2">Frequently Asked Questions</h2>
+            <p class="text-slate-500 text-sm text-center mb-8">Got questions? We've got answers.</p>
+            <div class="space-y-3">
+                <details class="bg-white/[0.03] border border-white/5 rounded-xl group">
+                    <summary
+                        class="flex items-center justify-between cursor-pointer px-5 py-4 text-sm font-semibold text-white list-none">
+                        Are these tools for lifetime?
+                        <i
+                            class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="px-5 pb-4 text-xs text-slate-400 leading-relaxed">Yes, absolutely! Pay once and get
+                        lifetime access. No monthly subscriptions, no hidden charges. Future updates are also included
+                        for free.</p>
+                </details>
+                <details class="bg-white/[0.03] border border-white/5 rounded-xl group">
+                    <summary
+                        class="flex items-center justify-between cursor-pointer px-5 py-4 text-sm font-semibold text-white list-none">
+                        How to install the tools?
+                        <i
+                            class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="px-5 pb-4 text-xs text-slate-400 leading-relaxed">Super easy! Download ZIP → Extract →
+                        Open chrome://extensions in Chrome → Enable Developer Mode → Click Load Unpacked → Done! Takes
+                        just 2 minutes.</p>
+                </details>
+                <details class="bg-white/[0.03] border border-white/5 rounded-xl group">
+                    <summary
+                        class="flex items-center justify-between cursor-pointer px-5 py-4 text-sm font-semibold text-white list-none">
+                        Is this legal to use?
+                        <i
+                            class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="px-5 pb-4 text-xs text-slate-400 leading-relaxed">Yes! These tools extract publicly
+                        available data that anyone can see in a browser. This is data scraping, not hacking. You can
+                        legally use it for your business growth.</p>
+                </details>
+                <details class="bg-white/[0.03] border border-white/5 rounded-xl group">
+                    <summary
+                        class="flex items-center justify-between cursor-pointer px-5 py-4 text-sm font-semibold text-white list-none">
+                        How long after payment do I get access?
+                        <i
+                            class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="px-5 pb-4 text-xs text-slate-400 leading-relaxed">Instant! As soon as your payment is
+                        verified, you'll get the download link immediately. Everything will be ready in your Chrome
+                        within 2-3 minutes.</p>
+                </details>
+                <details class="bg-white/[0.03] border border-white/5 rounded-xl group">
+                    <summary
+                        class="flex items-center justify-between cursor-pointer px-5 py-4 text-sm font-semibold text-white list-none">
+                        Do I get support after purchase?
+                        <i
+                            class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform group-open:rotate-180"></i>
+                    </summary>
+                    <p class="px-5 pb-4 text-xs text-slate-400 leading-relaxed">Yes! You get dedicated WhatsApp support.
+                        Whether it's installation, usage, or any issue — we'll help you out. You're not alone!</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Money-Back Guarantee -->
+    <section class="py-10 px-4">
+        <div
+            class="max-w-lg mx-auto bg-gradient-to-b from-green-500/10 to-transparent border border-green-500/20 rounded-2xl p-6 md:p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-4">
+                <i class="fa-solid fa-shield-check text-green-400 text-2xl"></i>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Tools Work Guarantee</h3>
+            <p class="text-xs text-slate-400 leading-relaxed mb-4">If 5 or more tools out of 16 fail to scrape data and
+                our support team is unable to resolve the issue, you'll receive a full refund within 7 days of purchase.
+            </p>
+            <button onclick="openPaymentModal()"
+                class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-400 text-white font-bold px-8 py-3 rounded-xl transition-all active:scale-95">
+                <i class="fa-solid fa-lock text-sm"></i> Risk-Free Access — ₹299
+            </button>
+        </div>
+    </section>
+
+    <!-- Final CTA Footer -->
+    <footer class="border-t border-white/5 bg-black/40 py-12">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-2xl font-bold mb-4">Ready to 10x your lead generation?</h2>
+            <p class="text-slate-400 mb-8">Stop paying monthly subscriptions. Get lifetime access to all 16 tools today.
+            </p>
+            <button onclick="openPaymentModal()"
+                class="inline-flex items-center gap-2 bg-white text-black font-bold px-8 py-3 rounded-full hover:bg-slate-200 transition-colors shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:-translate-y-1">
+                Get Instant Access <i class="fa-solid fa-arrow-right"></i>
+            </button>
+            <p class="text-[10px] text-slate-600 mt-8">© 2026 DataXtractor Pro. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur-sm" onclick="closePaymentModal()"></div>
+        <div class="w-full max-w-[420px] mx-3 relative z-10 transform scale-95 opacity-0 transition-all modal-scroll"
+            id="modal-content" style="max-height:95vh;overflow-y:auto">
+
+            <!-- Header Bar -->
+            <div
+                class="bg-gradient-to-r from-blue-600 to-indigo-700 rounded-t-2xl px-5 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
+                        <i class="fa-solid fa-shield-halved text-white text-sm"></i>
+                    </div>
+                    <div>
+                        <p class="text-white font-bold text-sm">DataXtractor Pro</p>
+                        <p class="text-blue-200 text-[10px]">Secure Checkout</p>
+                    </div>
+                </div>
+                <button onclick="closePaymentModal()" class="text-white/60 hover:text-white transition-colors">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="bg-[#1a1f2e] rounded-b-2xl">
+
+                <!-- Amount Section -->
+                <div class="px-5 pt-5 pb-4 border-b border-white/5">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-slate-400 text-[11px] mb-0.5">16 Tools Data Extractor Bundle</p>
+                            <p class="text-slate-500 text-[10px]">Lifetime Access • Instant Delivery</p>
+                        </div>
+                        <div class="text-right">
+                            <p class="text-slate-500 text-[10px] line-through">₹2,999</p>
+                            <p class="text-white font-black text-2xl">₹299</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Scan & Pay -->
+                <div class="px-5 pt-4 pb-3">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span
+                            class="w-5 h-5 rounded-full bg-blue-500 text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">1</span>
+                        <p class="text-white text-xs font-semibold">Scan QR & Pay ₹299</p>
+                    </div>
+                    <div class="bg-white rounded-xl p-3 mx-auto w-fit mb-2">
+                        <img src="/assets/qr-code.jpeg" alt="UPI QR Code" class="w-44 md:w-48 h-auto rounded-lg">
+                    </div>
+                    <div class="flex items-center justify-center gap-1.5 mb-3 flex-wrap">
+                        <span
+                            class="bg-slate-700/50 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded">GPay</span>
+                        <span
+                            class="bg-slate-700/50 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded">PhonePe</span>
+                        <span
+                            class="bg-slate-700/50 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded">Paytm</span>
+                        <span class="bg-slate-700/50 text-slate-400 text-[9px] font-bold px-2 py-0.5 rounded">Any
+                            UPI</span>
+                    </div>
+
+                    <!-- UPI ID Copy -->
+                    <div class="flex items-center justify-center gap-2 bg-slate-800/60 rounded-lg py-2 px-3">
+                        <span class="text-[10px] text-slate-500">UPI:</span>
+                        <span class="text-white font-semibold text-xs" id="upi-id">Loading...</span>
+                        <button onclick="copyUPI()"
+                            class="bg-blue-600 hover:bg-blue-500 text-white text-[10px] font-bold px-2.5 py-1 rounded transition-all active:scale-95">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Divider -->
+                <div class="px-5">
+                    <div class="flex items-center gap-3 py-1">
+                        <div class="h-px flex-1 bg-white/5"></div>
+                        <span class="text-[10px] text-slate-600 uppercase font-bold tracking-wider">After Payment</span>
+                        <div class="h-px flex-1 bg-white/5"></div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Verify -->
+                <div class="px-5 pt-3 pb-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span
+                            class="w-5 h-5 rounded-full bg-green-500 text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">2</span>
+                        <p class="text-white text-xs font-semibold">Enter Transaction ID to Verify</p>
+                    </div>
+                    <input type="text" id="txn-input" placeholder="Paste your UPI Transaction ID here"
+                        class="w-full bg-slate-800/80 border border-white/10 rounded-lg px-4 py-3 text-white text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 mb-2 font-mono">
+                    <div id="verify-status" class="text-xs text-center mb-2 hidden"></div>
+                    <button onclick="verifyPayment()" id="verify-btn"
+                        class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-400 hover:to-emerald-500 text-white font-bold py-3.5 rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-green-500/20">
+                        <i class="fa-solid fa-lock text-xs"></i> Verify & Get Instant Access
+                    </button>
+
+                    <!-- Trust Badges -->
+                    <div class="flex items-center justify-center gap-3 mt-3">
+                        <div class="flex items-center gap-1 text-[9px] text-slate-500">
+                            <i class="fa-solid fa-shield-check text-green-500"></i> 256-bit Secure
+                        </div>
+                        <div class="flex items-center gap-1 text-[9px] text-slate-500">
+                            <i class="fa-solid fa-lock text-blue-500"></i> Encrypted
+                        </div>
+                        <div class="flex items-center gap-1 text-[9px] text-slate-500">
+                            <i class="fa-solid fa-check-circle text-emerald-500"></i> Instant Delivery
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load config from server
+        fetch('/api/config').then(r => r.json()).then(cfg => {
+            if (cfg.upi_id) document.getElementById('upi-id').textContent = cfg.upi_id;
+        });
+
+        // Inline Video Play
+        function playVideo(thumbEl, videoId) {
+            const iframe = document.createElement('iframe');
+            iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+            iframe.className = 'w-full aspect-video';
+            iframe.setAttribute('frameborder', '0');
+            iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+            iframe.setAttribute('allowfullscreen', '');
+            thumbEl.replaceWith(iframe);
+        }
+
+        // Copy UPI ID
+        function copyUPI() {
+            const upiId = document.getElementById('upi-id').textContent;
+            navigator.clipboard.writeText(upiId).then(() => {
+                const btn = event.target.closest('button');
+                btn.innerHTML = '<i class="fa-solid fa-check mr-1"></i> Copied!';
+                btn.classList.remove('bg-indigo-600');
+                btn.classList.add('bg-green-600');
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fa-solid fa-copy mr-1"></i> Copy';
+                    btn.classList.remove('bg-green-600');
+                    btn.classList.add('bg-indigo-600');
+                }, 2000);
+            });
+        }
+
+        // Verify Payment via TXN ID
+        async function verifyPayment() {
+            const txnInput = document.getElementById('txn-input');
+            const statusEl = document.getElementById('verify-status');
+            const btn = document.getElementById('verify-btn');
+            const txnID = txnInput.value.trim();
+
+            if (!txnID || txnID.length < 10) {
+                statusEl.className = 'text-xs text-center mb-3 text-red-400';
+                statusEl.textContent = '❌ Please enter a valid Transaction ID';
+                statusEl.classList.remove('hidden');
+                return;
+            }
+
+            // Show loading
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Verifying...';
+            statusEl.className = 'text-xs text-center mb-3 text-yellow-400';
+            statusEl.textContent = '🔍 Checking payment...';
+            statusEl.classList.remove('hidden');
+
+            try {
+                const resp = await fetch('/api/verify-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ txn_id: txnID })
+                });
+                const data = await resp.json();
+
+                if (data.verified) {
+                    statusEl.className = 'text-xs text-center mb-3 text-green-400';
+                    statusEl.textContent = '✅ Payment Verified! Redirecting to download...';
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> Verified!';
+                    btn.classList.remove('from-green-500', 'to-emerald-600');
+                    btn.classList.add('from-green-600', 'to-green-700');
+                    setTimeout(() => {
+                        window.location.href = '/download.html?txn=' + encodeURIComponent(txnID);
+                    }, 1500);
+                } else {
+                    statusEl.className = 'text-xs text-center mb-3 text-red-400';
+                    statusEl.textContent = data.message;
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-shield-check"></i> Verify & Get Tools';
+                }
+            } catch (err) {
+                statusEl.className = 'text-xs text-center mb-3 text-red-400';
+                statusEl.textContent = '❌ Server error. Please try again.';
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fa-solid fa-shield-check"></i> Verify & Get Tools';
+            }
+        }
+
+        // Payment Modal
+        function openPaymentModal() {
+            const modal = document.getElementById('payment-modal');
+            const content = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                content.classList.remove('scale-95', 'opacity-0');
+                content.classList.add('scale-100', 'opacity-100');
+            }, 10);
+        }
+
+        function closePaymentModal() {
+            const modal = document.getElementById('payment-modal');
+            const content = document.getElementById('modal-content');
+            content.classList.remove('scale-100', 'opacity-100');
+            content.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 200);
+        }
+    </script>
+</body>
+
+</html>
