@@ -106,7 +106,7 @@
     </style>
 </head>
 
-<body class="relative min-h-screen pb-20 md:pb-0">
+<body class="relative min-h-screen">
 
     <!-- Background Elements -->
     <div class="fixed inset-0 bg-grid z-[-2]"></div>
@@ -557,14 +557,7 @@
         </div>
     </footer>
 
-    <!-- Sticky Mobile CTA -->
-    <div id="mobile-sticky-cta"
-         class="md:hidden fixed bottom-3 left-3 right-3 z-40 transition-all duration-300">
-        <button onclick="openPaymentModal()"
-            class="w-full max-w-[340px] mx-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm py-3 rounded-xl shadow-lg active:scale-[0.98] transition-transform">
-            <i class="fa-solid fa-lock text-xs"></i> Unlock ₹299
-        </button>
-    </div>
+
 
     <!-- 4-Step Payment Modal -->
     <div id="payment-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
@@ -790,23 +783,7 @@
         // CSS for pb-safe (Mobile safe area padding)
         document.head.insertAdjacentHTML("beforeend", `<style>.pb-safe { padding-bottom: env(safe-area-inset-bottom, 1rem); }</style>`);
 
-        // Mobile Sticky CTA Observer
-        const stickyCTA = document.getElementById('mobile-sticky-cta');
-        const toolsSection = document.getElementById('tools');
 
-        if (stickyCTA && toolsSection) {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        stickyCTA.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
-                    } else {
-                        stickyCTA.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            observer.observe(toolsSection);
-        }
     </script>
 </body>
 </html>
