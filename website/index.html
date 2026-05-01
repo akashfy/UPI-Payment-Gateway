@@ -106,7 +106,7 @@
     </style>
 </head>
 
-<body class="relative min-h-screen">
+<body class="relative min-h-screen pb-20 md:pb-0">
 
     <!-- Background Elements -->
     <div class="fixed inset-0 bg-grid z-[-2]"></div>
@@ -229,28 +229,28 @@
 
     <!-- Feature Highlights -->
     <section class="border-y border-white/5 bg-white/[0.01] py-10">
-        <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
-                <i class="fa-solid fa-bullseye text-2xl text-blue-400"></i>
-                <p class="text-sm text-slate-300 font-bold uppercase tracking-wide">Built for Marketers</p>
+        <div class="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-6 text-center">
+            <div class="p-3 md:p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
+                <i class="fa-solid fa-bullseye text-xl md:text-2xl text-blue-400"></i>
+                <p class="text-[11px] md:text-sm text-slate-300 font-bold uppercase tracking-wide">Built for Marketers</p>
             </div>
-            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
-                <i class="fa-solid fa-toolbox text-2xl text-indigo-400"></i>
-                <p class="text-sm text-slate-300 font-bold uppercase tracking-wide">16 Premium Tools</p>
+            <div class="p-3 md:p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
+                <i class="fa-solid fa-toolbox text-xl md:text-2xl text-indigo-400"></i>
+                <p class="text-[11px] md:text-sm text-slate-300 font-bold uppercase tracking-wide">16 Premium Tools</p>
             </div>
-            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
-                <i class="fa-solid fa-users text-2xl text-green-400"></i>
-                <p class="text-sm text-slate-300 font-bold uppercase tracking-wide">Lead Generation Ready</p>
+            <div class="p-3 md:p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
+                <i class="fa-solid fa-users text-xl md:text-2xl text-green-400"></i>
+                <p class="text-[11px] md:text-sm text-slate-300 font-bold uppercase tracking-wide">Lead Generation Ready</p>
             </div>
-            <div class="p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
-                <i class="fa-solid fa-wand-magic-sparkles text-2xl text-purple-400"></i>
-                <p class="text-sm text-slate-300 font-bold uppercase tracking-wide">Simple Setup</p>
+            <div class="p-3 md:p-4 rounded-2xl bg-white/[0.02] border border-white/5 flex flex-col items-center justify-center gap-2">
+                <i class="fa-solid fa-wand-magic-sparkles text-xl md:text-2xl text-purple-400"></i>
+                <p class="text-[11px] md:text-sm text-slate-300 font-bold uppercase tracking-wide">Simple Setup</p>
             </div>
         </div>
     </section>
 
     <!-- Features Grid -->
-    <div id="tools" class="text-center mt-20 max-w-7xl mx-auto px-4 sm:px-6">
+    <div id="tools" class="text-center mt-12 md:mt-20 max-w-7xl mx-auto px-4 sm:px-6">
         <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-slate-300 text-[11px] font-bold uppercase tracking-widest mb-4">
             Included in Bundle
         </div>
@@ -558,13 +558,12 @@
     </footer>
 
     <!-- Sticky Mobile CTA -->
-    <div class="md:hidden fixed bottom-0 w-full z-40 bg-background/90 backdrop-blur-lg border-t border-white/10 p-3 pb-safe slide-up">
-        <div class="max-w-sm mx-auto">
-            <button onclick="openPaymentModal()"
-                class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm py-3 rounded-xl shadow-lg active:scale-[0.98] transition-transform">
-                <i class="fa-solid fa-lock text-sm"></i> Unlock Now ₹299
-            </button>
-        </div>
+    <div id="mobile-sticky-cta"
+         class="md:hidden fixed bottom-3 left-3 right-3 z-40 transition-all duration-300">
+        <button onclick="openPaymentModal()"
+            class="w-full max-w-[340px] mx-auto flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm py-3 rounded-xl shadow-lg active:scale-[0.98] transition-transform">
+            <i class="fa-solid fa-lock text-xs"></i> Unlock ₹299
+        </button>
     </div>
 
     <!-- 4-Step Payment Modal -->
@@ -790,6 +789,24 @@
         
         // CSS for pb-safe (Mobile safe area padding)
         document.head.insertAdjacentHTML("beforeend", `<style>.pb-safe { padding-bottom: env(safe-area-inset-bottom, 1rem); }</style>`);
+
+        // Mobile Sticky CTA Observer
+        const stickyCTA = document.getElementById('mobile-sticky-cta');
+        const toolsSection = document.getElementById('tools');
+
+        if (stickyCTA && toolsSection) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        stickyCTA.classList.add('translate-y-full', 'opacity-0', 'pointer-events-none');
+                    } else {
+                        stickyCTA.classList.remove('translate-y-full', 'opacity-0', 'pointer-events-none');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            observer.observe(toolsSection);
+        }
     </script>
 </body>
 </html>
