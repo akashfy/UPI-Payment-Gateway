@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="dark scroll-smooth overflow-x-hidden">
 
 <head>
     <meta charset="UTF-8">
@@ -106,16 +106,18 @@
     </style>
 </head>
 
-<body class="relative min-h-screen">
+<body class="relative min-h-screen overflow-x-hidden">
 
     <!-- Background Elements -->
-    <div class="fixed inset-0 bg-grid z-[-2]"></div>
-    <div class="glow-blob top-[-200px] left-[-100px] bg-blue-600/20"></div>
-    <div class="glow-blob bottom-[20%] right-[-200px] bg-indigo-600/20"></div>
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-[-2]">
+        <div class="absolute inset-0 bg-grid"></div>
+        <div class="glow-blob top-[-200px] left-[-100px] bg-blue-600/20"></div>
+        <div class="glow-blob bottom-[20%] right-[-200px] bg-indigo-600/20"></div>
+    </div>
 
     <!-- Navigation/Header -->
     <nav class="fixed top-0 w-full border-b border-white/5 bg-background/60 backdrop-blur-xl z-50">
-        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
             <div class="font-bold text-xl tracking-tight flex items-center gap-2">
                 <i class="fa-solid fa-bolt text-blue-500"></i> DataXtractor Pro
             </div>
@@ -425,8 +427,8 @@
             </details>
         </div>
         
-        <div class="mt-8 text-center">
-            <button onclick="openPaymentModal()" class="px-5 md:px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white font-bold text-sm md:text-base transition-all hover:scale-105 shadow-lg">
+        <div class="mt-8 text-center px-4">
+            <button onclick="openPaymentModal()" class="w-full sm:w-auto flex sm:inline-flex justify-center items-center px-5 md:px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white font-bold text-sm md:text-base transition-all hover:scale-105 shadow-lg">
                 Unlock All 16 Tools Now
             </button>
         </div>
@@ -546,7 +548,7 @@
             <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to 10x your lead generation?</h2>
             <p class="text-slate-400 mb-10 max-w-xl mx-auto">Stop paying monthly subscriptions. Secure your lifetime access to all 16 premium tools today before the price increases.</p>
             <button onclick="openPaymentModal()"
-                class="inline-flex items-center gap-2 bg-white text-black font-bold text-sm md:text-lg px-5 md:px-10 py-3 md:py-4 rounded-xl hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]">
+                class="flex sm:inline-flex w-full sm:w-auto justify-center items-center gap-2 bg-white text-black font-bold text-base md:text-lg px-5 md:px-10 py-4 rounded-xl hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]">
                 Unlock Now for ₹299 <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
             <div class="mt-6 flex items-center justify-center gap-4 text-xs text-slate-500">
@@ -562,7 +564,7 @@
     <!-- 4-Step Payment Modal -->
     <div id="payment-modal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
         <div class="absolute inset-0 bg-black/80 backdrop-blur-md" onclick="closePaymentModal()"></div>
-        <div class="w-full max-w-[420px] mx-4 relative z-10 transform scale-95 opacity-0 transition-all duration-300"
+        <div class="w-[calc(100%-2rem)] max-w-[420px] relative z-10 transform scale-95 opacity-0 transition-all duration-300"
             id="modal-content">
 
             <!-- Header Bar -->
