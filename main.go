@@ -21,7 +21,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-//go:embed website/*
+//go:embed frontend/*
 var websiteFS embed.FS
 
 const GmailIMAP = "imap.gmail.com:993"
@@ -45,13 +45,13 @@ type VerifyResponse struct {
 func main() {
 	_ = godotenv.Load()
 
-	// Embed website files — strip "website/" prefix so / serves index.html
+	// Embed frontend files — strip "frontend/" prefix so / serves index.html
 	port := getEnv("SERVER_PORT", ":8080")
 	if !strings.HasPrefix(port, ":") {
 		port = ":" + port
 	}
 
-	webFS, _ := fs.Sub(websiteFS, "website")
+	webFS, _ := fs.Sub(websiteFS, "frontend")
 	http.Handle("/", http.FileServer(http.FS(webFS)))
 	http.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 	http.HandleFunc("/api/config", handleConfig)

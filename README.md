@@ -78,7 +78,7 @@ docker run -d -p 8080:8080 --env-file .env upishield-gateway
 ├── main.go             # Core Go backend server
 ├── Dockerfile          # Docker container configuration
 ├── .env.example        # Environment variable template
-├── embedded/           # Embedded web templates and static files
+├── frontend/           # Embedded web templates and static files
 └── assets/             # Images, QR code, and downloadable products
 ```
 
