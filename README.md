@@ -83,15 +83,7 @@ docker run -d -p 8080:8080 --env-file .env upishield-gateway
 └── assets/             # Images, QR code, and downloadable products
 ```
 
----
 
-## 📸 Screenshots
-
-| Landing Page | Payment Verify | Download Page |
-| :---: | :---: | :---: |
-| ![Landing Page](assets/screenshot-home.png) | ![Payment Verify](assets/screenshot-verify.png) | ![Download Page](assets/screenshot-download.png) |
-
----
 
 ## 🛡️ Security Notes
 
