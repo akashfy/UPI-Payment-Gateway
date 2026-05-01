@@ -7,11 +7,11 @@
 ![UPI](https://img.shields.io/badge/UPI-Payment_Verification-22c55e?style=for-the-badge)
 ![Self Hosted](https://img.shields.io/badge/Self--Hosted-Yes-purple?style=for-the-badge)
 
-**UPIShield Gateway** is a simple, fast, and self-hosted payment verification system designed for selling digital products using UPI.
+**UPIShield Gateway** is a simple, fast, and self-hosted payment verification system designed for selling digital products using UPI with **0% Transaction Charges**.
 
-It automatically verifies a customer’s UPI transaction ID by securely checking your Gmail/IMAP inbox and unlocks the product download page instantly.
+It automatically verifies a customer’s UPI transaction ID by securely checking your Gmail/IMAP inbox and unlocks the product download page instantly. Keep 100% of your earnings without any third-party gateway fees!
 
-> ⭐ Star this repo and follow [akashfy](https://github.com/akashfy) if you want more self-hosted payment automation tools!
+> ⭐ Star this repo and fork it if you want more self-hosted payment automation tools!
 
 ---
 
@@ -23,7 +23,7 @@ It automatically verifies a customer’s UPI transaction ID by securely checking
 - ✅ **High Performance** – Built with Go for speed and low memory usage
 - ✅ **Docker Ready** – Simple deployment via container
 - ✅ **Built-in Landing Page** – Clean and responsive UI included
-- ✅ **Zero Fees** – No paid payment gateway required
+- ✅ **0% Transaction Charges** – Keep 100% of your profits, absolutely zero hidden fees or API charges!
 
 ---
 
