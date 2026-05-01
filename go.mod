@@ -1,4 +1,4 @@
-module adsautomation
+module upishield-gateway
 
 go 1.26.0
 
