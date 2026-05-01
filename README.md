@@ -42,9 +42,10 @@ It automatically verifies a customer’s UPI transaction ID by securely checking
 
 1. Rename `.env.example` to `.env`.
 2. Configure the required environment variables:
-   - `EMAIL_ADDRESS`: Your Gmail address.
-   - `EMAIL_PASSWORD`: Your [Gmail App Password](https://myaccount.google.com/apppasswords).
-   - `PORT`: Server port (default is `:8080`).
+   - `GMAIL_EMAIL`: Your Gmail address.
+   - `GMAIL_APP_PASSWORD`: Your [Gmail App Password](https://myaccount.google.com/apppasswords).
+   - `SERVER_PORT`: Server port (default is `:8080`).
+   - `UPI_ID`: Your UPI ID (displayed on the landing page).
    - `REQUIRED_AMOUNT`: The minimum required payment amount (e.g., `299`).
 
 ### Run Locally
@@ -78,7 +79,7 @@ docker run -d -p 8080:8080 --env-file .env upishield-gateway
 ├── main.go             # Core Go backend server
 ├── Dockerfile          # Docker container configuration
 ├── .env.example        # Environment variable template
-├── frontend/           # Embedded web templates and static files
+├── website/           # Embedded web templates and static files
 └── assets/             # Images, QR code, and downloadable products
 ```
 
