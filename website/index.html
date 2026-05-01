@@ -169,8 +169,8 @@
 
                 <div class="hidden lg:block">
                     <button onclick="openPaymentModal()"
-                        class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-lg py-4 px-10 rounded-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1">
-                        <i class="fa-solid fa-lock text-xl"></i> Unlock Now for ₹299
+                        class="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold text-sm md:text-lg py-3 md:py-4 px-5 md:px-10 rounded-xl transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)] hover:shadow-[0_0_30px_rgba(59,130,246,0.5)] hover:-translate-y-1">
+                        <i class="fa-solid fa-lock text-base md:text-xl"></i> Unlock Now for ₹299
                     </button>
                     <p class="text-xs text-slate-500 mt-3 font-medium"><i class="fa-solid fa-shield-halved text-green-500 mr-1"></i> Secure UPI Verification</p>
                 </div>
@@ -213,7 +213,7 @@
                         </ul>
 
                         <button onclick="openPaymentModal()"
-                            class="w-full flex items-center justify-center gap-2 bg-white text-black hover:bg-slate-200 font-bold text-lg py-4 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95">
+                            class="w-full flex items-center justify-center gap-2 bg-white text-black hover:bg-slate-200 font-bold text-sm md:text-lg py-3 md:py-4 px-5 md:px-10 rounded-xl transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95">
                             Unlock Now for ₹299
                         </button>
 
@@ -426,7 +426,7 @@
         </div>
         
         <div class="mt-8 text-center">
-            <button onclick="openPaymentModal()" class="px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white font-bold transition-all hover:scale-105 shadow-lg">
+            <button onclick="openPaymentModal()" class="px-5 md:px-8 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white font-bold text-sm md:text-base transition-all hover:scale-105 shadow-lg">
                 Unlock All 16 Tools Now
             </button>
         </div>
@@ -546,7 +546,7 @@
             <h2 class="text-3xl md:text-4xl font-black mb-4">Ready to 10x your lead generation?</h2>
             <p class="text-slate-400 mb-10 max-w-xl mx-auto">Stop paying monthly subscriptions. Secure your lifetime access to all 16 premium tools today before the price increases.</p>
             <button onclick="openPaymentModal()"
-                class="inline-flex items-center gap-2 bg-white text-black font-bold px-10 py-4 rounded-xl hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]">
+                class="inline-flex items-center gap-2 bg-white text-black font-bold text-sm md:text-lg px-5 md:px-10 py-3 md:py-4 rounded-xl hover:bg-slate-200 transition-all shadow-[0_0_30px_rgba(255,255,255,0.15)] hover:-translate-y-1 hover:shadow-[0_0_40px_rgba(255,255,255,0.25)]">
                 Unlock Now for ₹299 <i class="fa-solid fa-arrow-right ml-1"></i>
             </button>
             <div class="mt-6 flex items-center justify-center gap-4 text-xs text-slate-500">
@@ -558,11 +558,13 @@
     </footer>
 
     <!-- Sticky Mobile CTA -->
-    <div class="md:hidden fixed bottom-0 w-full z-40 bg-background/90 backdrop-blur-lg border-t border-white/10 p-4 pb-safe slide-up">
-        <button onclick="openPaymentModal()"
-            class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-base py-3.5 rounded-xl shadow-lg active:scale-[0.98] transition-transform">
-            <i class="fa-solid fa-lock text-sm"></i> Unlock Now ₹299
-        </button>
+    <div class="md:hidden fixed bottom-0 w-full z-40 bg-background/90 backdrop-blur-lg border-t border-white/10 p-3 pb-safe slide-up">
+        <div class="max-w-sm mx-auto">
+            <button onclick="openPaymentModal()"
+                class="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold text-sm py-3 rounded-xl shadow-lg active:scale-[0.98] transition-transform">
+                <i class="fa-solid fa-lock text-sm"></i> Unlock Now ₹299
+            </button>
+        </div>
     </div>
 
     <!-- 4-Step Payment Modal -->
