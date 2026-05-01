@@ -5,3 +5,7 @@ app
 *.exe
 ads/
 vps.yml_updated
+upishield-gateway
+dist/
+build/
+*.out
