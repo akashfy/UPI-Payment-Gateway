@@ -1,0 +1,7 @@
+.env
+assets/bundle.zip
+assets/qr-code.jpeg
+app
+*.exe
+ads/
+vps.yml_updated

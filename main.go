@@ -47,6 +47,9 @@ func main() {
 
 	// Embed website files — strip "website/" prefix so / serves index.html
 	port := getEnv("SERVER_PORT", ":8080")
+	if !strings.HasPrefix(port, ":") {
+		port = ":" + port
+	}
 
 	webFS, _ := fs.Sub(websiteFS, "website")
 	http.Handle("/", http.FileServer(http.FS(webFS)))
@@ -85,8 +88,14 @@ func handleVerifyPayment(w http.ResponseWriter, r *http.Request) {
 	}
 
 	var req VerifyRequest
-	body, _ := io.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
+	if err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(VerifyResponse{false, "Failed to read request body"})
+		return
+	}
 	if err := json.Unmarshal(body, &req); err != nil || req.TxnID == "" {
+		w.WriteHeader(http.StatusBadRequest)
 		json.NewEncoder(w).Encode(VerifyResponse{false, "Please enter a valid Transaction ID"})
 		return
 	}
@@ -99,12 +108,15 @@ func handleVerifyPayment(w http.ResponseWriter, r *http.Request) {
 	switch result {
 	case "verified":
 		fmt.Printf("✅ VERIFIED: %s\n", txnID)
+		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(VerifyResponse{true, "Payment verified! ✅"})
 	case "wrong_amount":
 		fmt.Printf("⚠️ WRONG AMOUNT: %s\n", txnID)
-		json.NewEncoder(w).Encode(VerifyResponse{false, "❌ Payment amount is not ₹299. Please pay the correct amount of ₹299 to get access."})
+		w.WriteHeader(http.StatusBadRequest)
+		json.NewEncoder(w).Encode(VerifyResponse{false, "❌ Payment amount is incorrect. Please pay the correct amount to get access."})
 	default:
 		fmt.Printf("❌ NOT FOUND: %s\n", txnID)
+		w.WriteHeader(http.StatusNotFound)
 		json.NewEncoder(w).Encode(VerifyResponse{false, "Transaction not found. Please wait 2-3 minutes after payment and try again. If issue persists, contact support on WhatsApp."})
 	}
 }
@@ -120,6 +132,11 @@ func searchGmail(txnID string) string {
 
 	email := getEnv("GMAIL_EMAIL", "")
 	pass := getEnv("GMAIL_APP_PASSWORD", "")
+	if email == "" || pass == "" {
+		log.Println("Gmail credentials are empty")
+		return "not_found"
+	}
+
 	if err := c.Login(email, pass); err != nil {
 		log.Printf("IMAP login fail: %v", err)
 		return "not_found"
@@ -152,6 +169,8 @@ func searchGmail(txnID string) string {
 		done <- c.Fetch(seqSet, items, messages)
 	}()
 
+	reqAmount := getEnv("REQUIRED_AMOUNT", "299")
+
 	result := "not_found"
 	for msg := range messages {
 		if result == "verified" {
@@ -165,18 +184,20 @@ func searchGmail(txnID string) string {
 			upper := strings.ToUpper(fullText)
 
 			hasTxn := strings.Contains(upper, strings.ToUpper(txnID))
-			hasAmount := strings.Contains(fullText, "299")
+			hasAmount := strings.Contains(fullText, reqAmount)
 
 			if hasTxn && hasAmount {
 				result = "verified"
-				fmt.Printf("   ✅ Match: TXN=%s + ₹299 verified\n", txnID)
+				fmt.Printf("   ✅ Match: TXN=%s + ₹%s verified\n", txnID, reqAmount)
 			} else if hasTxn && !hasAmount {
 				result = "wrong_amount"
-				fmt.Printf("   ⚠️  TXN found but amount NOT ₹299\n")
+				fmt.Printf("   ⚠️  TXN found but amount NOT ₹%s\n", reqAmount)
 			}
 		}
 	}
-	<-done
+	if err := <-done; err != nil {
+		log.Printf("IMAP fetch error: %v", err)
+	}
 	return result
 }
 
