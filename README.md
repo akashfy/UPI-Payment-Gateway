@@ -106,6 +106,10 @@ docker run -d -p 8080:8080 --env-file .env upishield-gateway
 
 We welcome contributions! Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on how to get started.
 
+<a href="https://github.com/akashfy/UPI-Payment-Gateway/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=akashfy/UPI-Payment-Gateway" alt="Contributors" />
+</a>
+
 ---
 
 ## ⚖️ License
