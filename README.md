@@ -2,7 +2,7 @@
 
 ### Self-hosted UPI Payment Verification Gateway for Digital Products
 
-![Go](https://img.shields.io/badge/Go-1.21+-00ADD8?style=for-the-badge&logo=go)
+![Go](https://img.shields.io/badge/Go-1.26+-00ADD8?style=for-the-badge&logo=go)
 ![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker)
 ![UPI](https://img.shields.io/badge/UPI-Payment_Verification-22c55e?style=for-the-badge)
 ![Self Hosted](https://img.shields.io/badge/Self--Hosted-Yes-purple?style=for-the-badge)
